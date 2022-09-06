@@ -1,3 +1,4 @@
+import math
 import random
 
 
@@ -7,13 +8,17 @@ def prime_test(N, k):
 
 
 def mod_exp(x, y, N):
-    # You will need to implement this function and change the return value.   
-	return 1
-	
+    if y == 0:
+        return 1
+    z = mod_exp(x, math.floor(y/2), N) # how to take the floor of y/2
+    if y % 2 == 0:
+        return pow(z, 2) % N
+    else:
+        return (x * pow(x, 2)) % N
 
 def fprobability(k):
-    # You will need to implement this function and change the return value.   
-    return 0.0
+    # You will need to implement this function and change the return value.
+    return (1-pow(1/2,k)) # 1-(1/2)^k
 
 
 def mprobability(k):
